@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+    /* DheepStack Dark Signature (Default) */
+    --background: #08090c;
+    --foreground: #f3f4f6;
+    --card-bg: rgba(17, 19, 26, 0.72);
+    --card-bg-elevated: rgba(23, 26, 36, 0.88);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --card-hover-border: rgba(0, 240, 255, 0.28);
+    --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+    
+    --primary: hsl(260, 85%, 65%);
+    --primary-glow: hsla(260, 85%, 65%, 0.15);
+    --accent: hsl(180, 80%, 45%);
+    --accent-glow: hsla(180, 80%, 45%, 0.12);
+    --emerald-brand: hsl(155, 75%, 45%);
+    --emerald-glow: hsla(155, 75%, 45%, 0.12);
+    
+    /* Token Syntax & Notice colors for Dark Mode */
+    --token-header-color: #c084fc;
+    --token-payload-color: #38bdf8;
+    --token-signature-color: #34d399;
+    --notice-amber-bg: rgba(245, 158, 11, 0.1);
+    --notice-amber-border: rgba(245, 158, 11, 0.25);
+    --notice-amber-text: #fbbf24;
+    --notice-amber-title: #fef08a;
+    --notice-purple-bg: rgba(168, 85, 247, 0.1);
+    --notice-purple-border: rgba(168, 85, 247, 0.25);
+    --notice-purple-text: #c084fc;
+    --notice-purple-title: #e9d5ff;
+
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+
+    --header-bg: rgba(8, 9, 12, 0.82);
+    --border-radius-sm: 8px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 20px;
+  }
+
+  /* DheepStack Light Theme */
+  html.theme-dheep-light,
+  html.light:not(.theme-obsidian):not(.theme-enterprise-slate):not(.theme-dheep-dark) {
+    --background: #f8fafc;
+    --foreground: #0f172a;
+    --card-bg: #ffffff;
+    --card-bg-elevated: #f1f5f9;
+    --card-border: #e2e8f0;
+    --card-hover-border: #cbd5e1;
+    --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+
+    --primary: #4f46e5;
+    --primary-glow: rgba(79, 70, 229, 0.1);
+    --accent: #0284c7;
+    --accent-glow: rgba(2, 132, 199, 0.1);
+    --emerald-brand: #059669;
+    --emerald-glow: rgba(5, 150, 105, 0.1);
+
+    /* High-contrast Token Syntax & Notice colors for Light Mode */
+    --token-header-color: #6b21a8;
+    --token-payload-color: #0369a1;
+    --token-signature-color: #047857;
+    --notice-amber-bg: #fef3c7;
+    --notice-amber-border: #fde68a;
+    --notice-amber-text: #92400e;
+    --notice-amber-title: #78350f;
+    --notice-purple-bg: #f3e8ff;
+    --notice-purple-border: #e9d5ff;
+    --notice-purple-text: #6b21a8;
+    --notice-purple-title: #581c87;
+
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+
+    --header-bg: rgba(248, 250, 252, 0.9);
+  }
+
+  /* Midnight Obsidian Theme */
+  html.theme-obsidian {
+    --background: #040507;
+    --foreground: #f8fafc;
+    --card-bg: rgba(12, 13, 17, 0.85);
+    --card-bg-elevated: rgba(18, 20, 26, 0.92);
+    --card-border: rgba(255, 255, 255, 0.06);
+    --card-hover-border: rgba(255, 255, 255, 0.16);
+    --card-shadow: 0 8px 36px 0 rgba(0, 0, 0, 0.65);
+
+    --primary: hsl(270, 85%, 65%);
+    --primary-glow: hsla(270, 85%, 65%, 0.15);
+    --accent: hsl(190, 90%, 50%);
+    --accent-glow: hsla(190, 90%, 50%, 0.12);
+    --emerald-brand: hsl(160, 80%, 48%);
+    --emerald-glow: hsla(160, 80%, 48%, 0.12);
+
+    --text-primary: #ffffff;
+    --text-secondary: #a1a1aa;
+    --text-muted: #52525b;
+
+    --header-bg: rgba(4, 5, 7, 0.88);
+  }
+
+  /* Slate Enterprise Security Theme */
+  html.theme-enterprise-slate {
+    --background: #0b1120;
+    --foreground: #f8fafc;
+    --card-bg: rgba(15, 23, 42, 0.78);
+    --card-bg-elevated: rgba(30, 41, 59, 0.9);
+    --card-border: rgba(51, 65, 85, 0.5);
+    --card-hover-border: rgba(56, 189, 248, 0.35);
+    --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+
+    --primary: hsl(235, 85%, 65%);
+    --primary-glow: hsla(235, 85%, 65%, 0.15);
+    --accent: hsl(199, 89%, 48%);
+    --accent-glow: hsla(199, 89%, 48%, 0.15);
+    --emerald-brand: hsl(150, 70%, 42%);
+    --emerald-glow: hsla(150, 70%, 42%, 0.12);
+
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+
+    --header-bg: rgba(11, 17, 32, 0.85);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+
+  code, pre, kbd, samp {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Ambient Radial Mesh Gradient (Matches Personal-Hub) */
+.bg-mesh {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-image: 
+    radial-gradient(at 15% 20%, hsla(260, 85%, 65%, 0.05) 0px, transparent 45%),
+    radial-gradient(at 85% 75%, hsla(180, 80%, 45%, 0.04) 0px, transparent 45%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+html.theme-dheep-light .bg-mesh,
+html.light:not(.theme-obsidian):not(.theme-enterprise-slate):not(.theme-dheep-dark) .bg-mesh {
+  background-image: 
+    radial-gradient(at 15% 20%, hsla(260, 85%, 65%, 0.04) 0px, transparent 45%),
+    radial-gradient(at 85% 75%, hsla(180, 80%, 45%, 0.03) 0px, transparent 45%);
+  filter: blur(50px);
+}
+
+/* Glassmorphism Card System */
+.glass-card {
+  background-color: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--card-shadow);
+  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: var(--card-hover-border);
+}
+
+.glass-card-elevated {
+  background-color: var(--card-bg-elevated);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--card-shadow);
+}
+
+/* Segment Pill Badge */
+.pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+}
+
+/* Dropdown Menu (Matches Personal Hub) */
+.glass-dropdown {
+  background: var(--card-bg-elevated);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45), 0 0 20px var(--accent-glow);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.25);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.45);
+}
+
+/* Focus Ring */
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
