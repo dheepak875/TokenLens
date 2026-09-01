@@ -6,7 +6,7 @@ test.describe('TokenLens End-to-End Application Flows', () => {
 
     // Check title & brand
     await expect(page).toHaveTitle(/TokenLens/);
-    await expect(page.getByText('Local-only processing')).toBeVisible();
+    await expect(page.getByText('100% Local Sandbox')).toBeVisible();
 
     // Navigate to Compare page
     await page.click('text=Compare');
@@ -14,7 +14,7 @@ test.describe('TokenLens End-to-End Application Flows', () => {
 
     // Navigate to Generator page
     await page.click('text=Generator');
-    await expect(page.getByText('Test Fixture & Local Development Generator')).toBeVisible();
+    await expect(page.getByText('Development Vector Generator Sandbox')).toBeVisible();
 
     // Navigate to Learn page
     await page.click('text=Learn');
@@ -22,24 +22,24 @@ test.describe('TokenLens End-to-End Application Flows', () => {
 
     // Navigate to Privacy page
     await page.click('text=Privacy');
-    await expect(page.getByText('Privacy Model, Local Guarantees & Threat Model')).toBeVisible();
+    await expect(page.getByText('Privacy Model & Zero-Trust Threat Analysis')).toBeVisible();
   });
 
   test('loads example token, inspects payload, verifies signature, and exports report', async ({ page }) => {
     await page.goto('/');
 
-    // Click safe example token button "HS256 Test Token"
-    await page.click('button:has-text("HS256 Test Token")');
+    // Click safe example token button "HS256 (HMAC)"
+    await page.click('button:has-text("HS256 (HMAC)")');
 
     // Verify compact token textarea has content
     const textarea = page.locator('#token-paste-area');
     await expect(textarea).not.toHaveValue('');
 
     // Check Inspector displays algorithm HS256
-    await expect(page.getByText('HS256')).toBeVisible();
+    await expect(page.getByRole('button', { name: 'HS256', exact: true })).toBeVisible();
 
     // Check Standard Claims Table contains sub: usr_dev_12345
-    await expect(page.getByText('usr_dev_12345')).toBeVisible();
+    await expect(page.getByRole('cell', { name: 'usr_dev_12345' })).toBeVisible();
 
     // Switch right panel tab to Verification tab
     await page.click('button:has-text("Verification")');
@@ -48,9 +48,9 @@ test.describe('TokenLens End-to-End Application Flows', () => {
     // Confirm signature verified status
     await expect(page.getByText('Signature VERIFIED')).toBeVisible();
 
-    // Switch right panel tab to Security Report
-    await page.click('button:has-text("Security Report")');
-    await expect(page.getByText('Security & Compliance Summary')).toBeVisible();
+    // Switch right panel tab to Security Audit
+    await page.click('button:has-text("Security Audit")');
+    await expect(page.getByText('Security & Compliance Audit')).toBeVisible();
 
     // Click Markdown export button
     const [download] = await Promise.all([
